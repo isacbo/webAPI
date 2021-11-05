@@ -28,9 +28,9 @@ namespace Tests.Features.GetLocation
 			var location = JsonSerializer.Deserialize<GetLocationQueryResponse>(responseBody, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
 
 			location.Uid.Should().Be(guid);
-			location.Location.X.Should().Be(0);
-			location.Location.Y.Should().Be(0);
-			location.Location.Z.Should().Be(0);
+			location.Location.X.Should().Be(10);
+			location.Location.Y.Should().Be(20);
+			location.Location.Z.Should().Be(30);
 		}
 
 		[Test]
