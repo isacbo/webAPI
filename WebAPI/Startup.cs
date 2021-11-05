@@ -1,3 +1,4 @@
+using Contracts.V1.GraphQL.Demo;
 using Core;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
@@ -24,7 +25,11 @@ namespace WebAPI
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
-			
+			services
+			.AddGraphQLServer()
+			.AddQueryType<Query>();
+
+
 			services.AddCore();
 			services.AddControllers();
 
@@ -57,6 +62,7 @@ namespace WebAPI
 			app.UseEndpoints(endpoints =>
 			{
 				endpoints.MapControllers();
+				endpoints.MapGraphQL();
 			});
 		}
 	}
