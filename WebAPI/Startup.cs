@@ -1,5 +1,4 @@
 using Contracts.V1.GraphQL;
-using Contracts.V1.GraphQL.Demo;
 using Core;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
@@ -28,8 +27,8 @@ namespace WebAPI
 		{
 			services
 			.AddGraphQLServer()
-			.AddQueryType<SpeakerQuery>()
-			.AddQueryType<Query>();
+			.AddQueryType<Query>()
+			.AddMutationType<Mutation>();
 			
 
 

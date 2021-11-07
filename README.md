@@ -4,6 +4,8 @@ Run the command below in the Core project
 
 ```
 dotnet ef migrations add Initial  --startup-project ../WebAPI 
+dotnet ef database update --startup-project ../WebAPI 
+
 ```
 
 
