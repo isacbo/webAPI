@@ -18,3 +18,4 @@ https://marketplace.visualstudio.com/items?itemName=ErikEJ.SQLServerCompactSQLit
 # SOLID 
 https://stackoverflow.com/questions/63179486/clean-architecture-cqrs-with-graphql-api
 https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html
+https://dev.to/tuanlc/graphql-clean-architectire-boilerplate-hog
