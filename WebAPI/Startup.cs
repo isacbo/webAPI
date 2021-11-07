@@ -1,3 +1,4 @@
+using Contracts.V1.GraphQL;
 using Contracts.V1.GraphQL.Demo;
 using Core;
 using MediatR;
@@ -27,7 +28,9 @@ namespace WebAPI
 		{
 			services
 			.AddGraphQLServer()
+			.AddQueryType<SpeakerQuery>()
 			.AddQueryType<Query>();
+			
 
 
 			services.AddCore();
