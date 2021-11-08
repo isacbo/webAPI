@@ -1,4 +1,5 @@
-﻿using Common;
+﻿using AutoMapper;
+using Common;
 using Core.Infrastructure;
 using Core.Models;
 using MediatR;
@@ -7,34 +8,36 @@ using System.Threading.Tasks;
 
 namespace Contracts.V1.GraphQL
 {
-    public class AddSpeakerCommandHandler : IRequestHandler<AddSpeakerCommand, CommandResult<AddSpeakerCommandResult>>
-    {
-        private readonly IApplicationDbContext _context;
+	public class AddSpeakerCommandHandler : IRequestHandler<AddSpeakerCommand, CommandResult<AddSpeakerCommandResult>>
+	{
+		private readonly ApplicationDbContext _context;
+		private IMapper _mapper;
 
-        public AddSpeakerCommandHandler(IApplicationDbContext context)
-        {
-            this._context = context;
-        }
+		public AddSpeakerCommandHandler(ApplicationDbContext context, IMapper mapper)
+		{
+			this._context = context;
+			this._mapper = mapper;
+		}
 
-        public async Task<CommandResult<AddSpeakerCommandResult>> Handle(AddSpeakerCommand command, CancellationToken cancellationToken)
-        {
-            var speaker = new Speaker
-            {
-                Name = command.Name,
-                Bio = command.Bio,
-                WebSite = command.WebSite
-            };
+		public async Task<CommandResult<AddSpeakerCommandResult>> Handle(AddSpeakerCommand command, CancellationToken cancellationToken)
+		{
+			Speaker speaker = new Core.Models.Speaker
+			{
+				Name = command.Name,
+				Bio = command.Bio,
+				WebSite = command.WebSite
+			};
 
-            this._context.Speakers.Add(speaker);
-            await ((ApplicationDbContext) this._context).SaveChangesAsync();
-            
-            return new CommandResult<AddSpeakerCommandResult>(
-                new AddSpeakerCommandResult 
-                { 
-                    Name = speaker.Name,
-                    Bio = speaker.Bio,
-                    WebSite = speaker.WebSite                
-                }, true);
-        }
-    }
+			this._context.Speakers.Add(speaker);
+			await _context.SaveChangesAsync();
+
+
+			var contractSpeaker = _mapper.Map<TheSpeaker>(speaker);
+			return new CommandResult<AddSpeakerCommandResult>(
+			new AddSpeakerCommandResult
+			{
+				TheSpeaker = contractSpeaker
+			}, true);
+		}
+	}
 }

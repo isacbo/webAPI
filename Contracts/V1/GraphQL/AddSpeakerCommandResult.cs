@@ -2,8 +2,7 @@
 {
     public class AddSpeakerCommandResult
     {
-        public string Name { get; set; }
-        public string Bio { get; set; }
-        public string WebSite { get; set; }
-    }
+		public TheSpeaker TheSpeaker { get; set; }
+
+	}
 }

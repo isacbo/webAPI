@@ -1,5 +1,6 @@
 using Contracts.V1.GraphQL;
 using Core;
+using Core.Features.AddSpeaker;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -12,7 +13,7 @@ using System.Reflection;
 
 namespace WebAPI
 {
-    public class Startup
+	public class Startup
 	{
 		public Startup(IConfiguration configuration)
 		{
@@ -24,6 +25,8 @@ namespace WebAPI
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
+			services.AddAutoMapper(typeof(AddSpeakerProfile));
+
 			services
 			.AddGraphQLServer()
 			.AddQueryType<Query>()

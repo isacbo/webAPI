@@ -1,29 +1,27 @@
-﻿using Core.Infrastructure;
+﻿using Contracts.V1.GraphQL;
+using Core.Infrastructure;
+using HotChocolate;
 using MediatR;
 using System.Threading.Tasks;
 
-namespace Contracts.V1.GraphQL
+namespace Core.Features.AddSpeaker
 {
-    public class Mutation
-    {
-        private readonly IMediator _mediator;
+	public class Mutation
+	{
+		
 
-        public Mutation(IMediator mediator)
-        {
-            _mediator = mediator;
-        }
+		
 
-        public async Task<AddSpeakerPayload> AddSpeakerAsync(AddSpeakerInput input)
-        {
-            var result = await this._mediator.Send(new AddSpeakerCommand
-            {
-                Name = input.Name,
-                Bio = input.Bio,
-                WebSite = input.WebSite
-            });
+		public async Task<AddSpeakerCommandResult> AddSpeakerAsync(AddSpeakerInput input, [Service] ISender sender )
+		{
+			var result = await sender.Send(new AddSpeakerCommand
+			{
+				Name = input.Name,
+				Bio = input.Bio,
+				WebSite = input.WebSite
+			});
 
-            //return result;
-            return new AddSpeakerPayload(new Core.Models.Speaker());
-        }
-    }
+			return result.Result;
+		}
+	}
 }

@@ -13,15 +13,15 @@ namespace Core
 	{
 		public static void AddCore(this IServiceCollection services)
 		{
-
 			services.AddMediatR(Assembly.GetExecutingAssembly());
 			
 			services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+
 			services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
 
 			services.AddScoped<ILocationService, LocationService>();
 
-			services.AddDbContext<IApplicationDbContext, ApplicationDbContext>(options => options.UseSqlite("Data Source=conferences.db"));
+			services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite("Data Source=conferences.db"), ServiceLifetime.Scoped);
 		}
 	}
 }
