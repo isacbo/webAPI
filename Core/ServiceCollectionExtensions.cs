@@ -21,7 +21,7 @@ namespace Core
 
 			services.AddScoped<ILocationService, LocationService>();
 
-			services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite("Data Source=conferences.db"));
+			services.AddDbContext<IApplicationDbContext, ApplicationDbContext>(options => options.UseSqlite("Data Source=conferences.db"));
 		}
 	}
 }

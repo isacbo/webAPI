@@ -1,6 +1,5 @@
 using Contracts.V1.GraphQL;
 using Core;
-using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -13,7 +12,7 @@ using System.Reflection;
 
 namespace WebAPI
 {
-	public class Startup
+    public class Startup
 	{
 		public Startup(IConfiguration configuration)
 		{
@@ -30,8 +29,6 @@ namespace WebAPI
 			.AddQueryType<Query>()
 			.AddMutationType<Mutation>();
 			
-
-
 			services.AddCore();
 			services.AddControllers();
 

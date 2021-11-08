@@ -19,3 +19,20 @@ https://marketplace.visualstudio.com/items?itemName=ErikEJ.SQLServerCompactSQLit
 https://stackoverflow.com/questions/63179486/clean-architecture-cqrs-with-graphql-api
 https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html
 https://dev.to/tuanlc/graphql-clean-architectire-boilerplate-hog
+
+
+# Autentication - Hot Chocolate
+https://chillicream.com/docs/hotchocolate/security/authentication
+
+https://docs.microsoft.com/en-us/samples/azure-samples/active-directory-aspnetcore-webapp-openidconnect-v2/how-to-secure-a-web-api-built-with-aspnet-core-using-the-azure-ad-b2c/
+
+
+# Azure AD B2C  
+
+
+https://docs.microsoft.com/en-us/azure/active-directory-b2c/application-types
+
+
+
+
+https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-auth-code-flow
